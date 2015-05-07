@@ -1,22 +1,29 @@
-//
-//  AppDelegate.m
-//  BikeShare3
-//
-//  Created by Catherine Reyto on 2015-05-06.
-//  Copyright (c) 2015 Catherine Reyto. All rights reserved.
-//
-
 #import "AppDelegate.h"
+#import "MapViewController.h"
+#import "MoreInfoController.h"
 
 @interface AppDelegate ()
 
 @end
 
-@implementation AppDelegate
+
+
+@implementation AppDelegate 
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    MapViewController *mapViewController = [[MapViewController alloc]init];
+    MoreInfoController *moreInfoController = [[MoreInfoController alloc]init];
+    UITabBarController *tabBarController = [[UITabBarController alloc]init];
+    UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:tabBarController];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen]bounds]];
+    [tabBarController setViewControllers:@[mapViewController, moreInfoController]];
+    self.window.rootViewController = navController;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
